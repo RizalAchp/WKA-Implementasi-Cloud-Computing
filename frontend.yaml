@@ -1,0 +1,38 @@
+---
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: todowebapp
+  namespace: todoapp
+  labels:
+    app: todowebapp
+spec:
+  replicas: 3
+  selector:
+    app: todowebapp
+  template:
+    metadata:
+      labels:
+        app: todowebapp
+    spec:
+      containers:
+        - name: todowebapp
+          image: rizalachp/todowebapp:release
+          ports:
+            - containerPort: 80
+              name: http-server
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: todowebapp
+  namespace: todoapp
+  labels:
+    app: todowebapp
+spec:
+  ports:
+    - port: 80
+      targetPort: http-server
+  selector:
+    app: todowebapp
+---

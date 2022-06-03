@@ -1,0 +1,5 @@
+[production]
+address = "0.0.0.0"
+port = 8080
+cli_colors = true
+secret_key = "UDszXnz4yfhE87FMrRIEeU3LtfW4nfFl1ftRJDuOBm0="
